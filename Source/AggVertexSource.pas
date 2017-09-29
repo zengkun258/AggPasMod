@@ -3,8 +3,8 @@ unit AggVertexSource;
 ////////////////////////////////////////////////////////////////////////////////
 //                                                                            //
 //  Anti-Grain Geometry (modernized Pascal fork, aka 'AggPasMod')             //
-//    Maintained by Christian-W. Budde (Christian@savioursofsoul.de)          //
-//    Copyright (c) 2012-2015                                                      //
+//    Maintained by Christian-W. Budde (Christian@pcjv.de)          //
+//    Copyright (c) 2012-2017                                                 //
 //                                                                            //
 //  Based on:                                                                 //
 //    Pascal port by Milan Marusinec alias Milano (milan@marusinec.sk)        //
@@ -47,7 +47,7 @@ type
 
   TAggVertexSource = class(TAggCustomVertexSource)
   protected
-    function GetPathID(Index: Cardinal): Cardinal; virtual; abstract;
+    function GetPathID(Index: Cardinal): Cardinal; virtual;
   public
     procedure RemoveAll; virtual;
     procedure AddVertex(X, Y: Double; Cmd: Cardinal); virtual;
@@ -80,6 +80,11 @@ end;
 
 
 { TAggVertexSource }
+
+function TAggVertexSource.GetPathID(Index: Cardinal): Cardinal;
+begin
+  Result := 0;
+end;
 
 procedure TAggVertexSource.RemoveAll;
 begin

@@ -3,8 +3,8 @@ unit AggRenderScanLines;
 ////////////////////////////////////////////////////////////////////////////////
 //                                                                            //
 //  Anti-Grain Geometry (modernized Pascal fork, aka 'AggPasMod')             //
-//    Maintained by Christian-W. Budde (Christian@savioursofsoul.de)          //
-//    Copyright (c) 2012-2015                                                      //
+//    Maintained by Christian-W. Budde (Christian@pcjv.de)          //
+//    Copyright (c) 2012-2017                                                 //
 //                                                                            //
 //  Based on:                                                                 //
 //    Pascal port by Milan Marusinec alias Milano (milan@marusinec.sk)        //
@@ -46,16 +46,24 @@ implementation
 
 procedure RenderScanLines(Ras: TAggRasterizerScanLine; Sl: TAggCustomScanLine;
   Ren: TAggCustomRendererScanLine);
+var
+  SlEm: TAggEmbeddedScanline;
 begin
   if Ras.RewindScanLines then
   begin
     Sl.Reset(Ras.MinimumX, Ras.MaximumX);
     Ren.Prepare(Cardinal(Ras.MaximumX - Ras.MinimumX + 2));
 
-    if Sl.IsEmbedded then
+    {if Sl.IsEmbedded then
       while Ras.SweepScanLineEm(Sl) do
         Ren.Render(Sl)
-    else
+    else}
+    if Sl is TAggEmbeddedScanline then
+    begin
+      SlEm := Sl as TAggEmbeddedScanline;
+      while Ras.SweepScanLine(SlEm) do
+        Ren.Render(SlEm)
+    end else
       while Ras.SweepScanLine(Sl) do
         Ren.Render(Sl);
   end;

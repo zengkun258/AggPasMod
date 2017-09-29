@@ -3,8 +3,8 @@ unit Agg2D;
 ////////////////////////////////////////////////////////////////////////////////
 //                                                                            //
 //  Anti-Grain Geometry (modernized Pascal fork, aka 'AggPasMod')             //
-//    Maintained by Christian-W. Budde (Christian@savioursofsoul.de)          //
-//    Copyright (c) 2012-2015                                                      //
+//    Maintained by Christian-W. Budde (Christian@pcjv.de)          //
+//    Copyright (c) 2012-2017                                                 //
 //                                                                            //
 //  Based on:                                                                 //
 //    Pascal port by Milan Marusinec alias Milano (milan@marusinec.sk)        //
@@ -27,7 +27,7 @@ interface
 {$I AggCompiler.inc}
 
 // With this define uncommented you can use FreeType font engine
-{-$DEFINE AGG2D_USE_FREETYPE }
+{-$DEFINE AGG2D_USE_FREETYPE}
 
 uses
   AggBasics,
